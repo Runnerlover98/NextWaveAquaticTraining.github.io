@@ -226,3 +226,17 @@ a:hover {
 
 /* Optional: prevent jump when URL hash changes */
 :target { scroll-margin-top: 80px; }
+
+/* Tabs baseline: everything hidden… */
+.tab-panel { display: none; }
+
+/* …except About as a no-JS fallback */
+#about.tab-panel { display: block; }
+
+/* Selected tab styling (optional) */
+.nav [role="tab"][aria-selected="true"] {
+  color: var(--brand);
+  border-bottom: 2px solid var(--brand);
+}
+
+.nav [role="tab"] { cursor: pointer; padding-bottom: .25rem; }
