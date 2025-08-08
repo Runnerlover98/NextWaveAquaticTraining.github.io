@@ -49,7 +49,7 @@ a:hover {
   border-bottom: 1px solid #e5e7eb;
   z-index: 1000;
 .logo {
-  height: 80px; /* increase from 50px to 80px or whatever looks right */
+  height: 60px; /* increase from 50px to 80px or whatever looks right */
   width: auto;
   display: block;
 }
