@@ -48,9 +48,8 @@ a:hover {
   background: var(--bg);
   border-bottom: 1px solid #e5e7eb;
   z-index: 1000;
-}
 .logo {
-  height: 50px; /* Adjust for your header */
+  height: 80px; /* increase from 50px to 80px or whatever looks right */
   width: auto;
   display: block;
 }
