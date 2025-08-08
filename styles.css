@@ -209,3 +209,20 @@ a:hover {
   align-items: center;
   justify-content: space-between;
 }
+/* Tabs: hide panels by default; JS will show the active one */
+.tab-panel { display: none; }
+
+/* Make the selected tab visually distinct (optional polish) */
+.nav [role="tab"][aria-selected="true"] {
+  color: var(--brand);
+  border-bottom: 2px solid var(--brand);
+}
+
+/* Give tabs a little spacing and cursor affordance */
+.nav [role="tab"] {
+  cursor: pointer;
+  padding-bottom: 0.25rem;
+}
+
+/* Optional: prevent jump when URL hash changes */
+:target { scroll-margin-top: 80px; }
