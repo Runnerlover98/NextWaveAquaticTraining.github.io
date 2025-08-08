@@ -176,12 +176,9 @@ a:hover {
 
 /* Responsive */
 @media (max-width: 640px) {
-  .hero h1 {
-    font-size: 2rem;
-  }
-  .nav {
-    display: none; /* For mobile: you could add a hamburger menu later */
-  }
+  .hero h1 {font-size: 2rem; }
+  .nav { display: none; }
+}
 .logo-only {
   height: 80px !important; /* good balance for most headers */
   width: auto !important;
