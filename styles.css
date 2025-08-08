@@ -193,3 +193,19 @@ a:hover {
 .brand-text {
   display: none !important; /* Just in case an old span is still in HTML */
 }
+/* Final logo & header adjustments */
+.site-header .brand img.logo {
+  height: 64px !important; /* adjust between 60–70px for best look */
+  width: auto !important;
+  display: block;
+}
+
+.brand-text {
+  display: none !important; /* ensure no brand name text shows */
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
