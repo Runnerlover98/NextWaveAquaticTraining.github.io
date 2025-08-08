@@ -189,7 +189,7 @@ a:hover {
     display: none; /* For mobile: you could add a hamburger menu later */
   }
 .logo-only {
-  height: 60px !important; /* Force a bigger logo */
+  height: 60px !important; /* good balance for most headers */
   width: auto !important;
   display: block;
 }
