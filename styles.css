@@ -51,7 +51,7 @@ a:hover {
 }
 
 .logo {
-  height: 60px; /* adjust as needed */
+  height: 70px; /* adjust as needed */
   width: auto;
   display: block;
 }
@@ -183,7 +183,7 @@ a:hover {
     display: none; /* For mobile: you could add a hamburger menu later */
   }
 .logo-only {
-  height: 60px !important; /* good balance for most headers */
+  height: 70px !important; /* good balance for most headers */
   width: auto !important;
   display: block;
 }
