@@ -188,4 +188,17 @@ a:hover {
   .nav {
     display: none; /* For mobile: you could add a hamburger menu later */
   }
+.logo-only {
+  height: 100px !important; /* Force a bigger logo */
+  width: auto !important;
+  display: block;
+}
 
+.brand {
+  display: flex;
+  align-items: center;
+}
+
+.brand-text {
+  display: none !important; /* Just in case an old span is still in HTML */
+}
