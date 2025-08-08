@@ -49,6 +49,25 @@ a:hover {
   border-bottom: 1px solid #e5e7eb;
   z-index: 1000;
 }
+.logo {
+  height: 50px; /* Adjust for your header */
+  width: auto;
+  display: block;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand-text {
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--brand);
+  margin-left: 0.5rem;
+}
+
 .site-header .container {
   display: flex;
   align-items: center;
@@ -170,22 +189,4 @@ a:hover {
   .nav {
     display: none; /* For mobile: you could add a hamburger menu later */
   }
-}.logo {
-  height: 50px; /* Adjust for your header */
-  width: auto;
-  display: block;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.brand-text {
-  font-weight: 800;
-  font-size: 1.25rem;
-  color: var(--brand);
-  margin-left: 0.5rem;
-}
 
