@@ -19,10 +19,10 @@
         <img src="assets/logo.png" alt="NextWave Aquatic Training logo" class="logo" />
       </a>
 <nav class="nav" role="tablist" aria-label="Site sections">
-  <a role="tab" aria-selected="true"  tabindex="0" data-tab="about">About</a>
-  <a role="tab" aria-selected="false" tabindex="0" data-tab="services">Services</a>
-  <a role="tab" aria-selected="false" tabindex="0" data-tab="courses">Courses</a>
-  <a role="tab" aria-selected="false" tabindex="0" data-tab="contact">Contact</a>
+  <a id="tab-about"   role="tab" aria-selected="true"  tabindex="0" data-tab="about">About</a>
+  <a id="tab-services" role="tab" aria-selected="false" tabindex="0" data-tab="services">Services</a>
+  <a id="tab-courses"  role="tab" aria-selected="false" tabindex="0" data-tab="courses">Courses</a>
+  <a id="tab-contact"  role="tab" aria-selected="false" tabindex="0" data-tab="contact">Contact</a>
 </nav>
     </div>
   </header>
@@ -109,75 +109,69 @@
   </section>
   
   <script>
-  (function () {
-    const nav = document.querySelector('.nav[role="tablist"]');
-    const tabs = Array.from(nav.querySelectorAll('[role="tab"]'));
-    const panels = Array.from(document.querySelectorAll('.tab-panel'));
+(function () {
+  const nav = document.querySelector('.nav[role="tablist"]');
+  const panels = Array.from(document.querySelectorAll('.tab-panel'));
 
-    function showTab(id, pushState = true) {
-      // Hide all panels
-      panels.forEach(p => p.style.display = 'none');
-      // Deselect all tabs
-      tabs.forEach(t => {
-        t.setAttribute('aria-selected', 'false');
-        t.tabIndex = 0;
-      });
-      // Show the requested panel
-      const panel = document.getElementById(id);
-      if (panel) panel.style.display = '';
+  // If nav is missing for some reason, at least show About and bail.
+  if (!nav) {
+    panels.forEach(p => p.style.display = 'none');
+    const fallback = document.getElementById('about');
+    if (fallback) fallback.style.display = '';
+    return;
+  }
 
-      // Select matching tab
-      const tab = tabs.find(t => t.dataset.tab === id);
-      if (tab) {
-        tab.setAttribute('aria-selected', 'true');
-        tab.tabIndex = 0;
-      }
+  const tabs = Array.from(nav.querySelectorAll('[role="tab"]'));
 
-      // Update hash without jumping
-      if (pushState) {
-        history.replaceState(null, '', '#' + id);
-      }
-    }
+  function showTab(id, pushState = true) {
+    // Hide all panels
+    panels.forEach(p => p.style.display = 'none');
 
-    // Click + keyboard activation
+    // Deselect all tabs
     tabs.forEach(t => {
-      t.addEventListener('click', (e) => {
-        e.preventDefault();
-        showTab(t.dataset.tab);
-      });
-      t.addEventListener('keydown', (e) => {
-        // Enter/Space to activate
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          showTab(t.dataset.tab);
-        }
-        // Optional: Arrow key navigation
-        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-          e.preventDefault();
-          const dir = e.key === 'ArrowRight' ? 1 : -1;
-          const idx = tabs.indexOf(t);
-          const next = tabs[(idx + dir + tabs.length) % tabs.length];
-          next.focus();
-        }
-      });
+      t.setAttribute('aria-selected', 'false');
+      t.tabIndex = 0;
     });
 
-    // On load: honor hash or default to "about"
-    const initial = (location.hash || '#about').replace('#', '');
-    showTab(initial, /*pushState*/ false);
-  })();
+    // Show requested panel
+    const panel = document.getElementById(id);
+    if (panel) panel.style.display = '';
+
+    // Select matching tab
+    const tab = tabs.find(t => t.dataset.tab === id);
+    if (tab) {
+      tab.setAttribute('aria-selected', 'true');
+      tab.tabIndex = 0;
+    }
+
+    // Update hash without jump
+    if (pushState) history.replaceState(null, '', '#' + id);
+  }
+
+  // Click + keyboard activation
+  tabs.forEach(t => {
+    t.addEventListener('click', (e) => {
+      e.preventDefault();
+      showTab(t.dataset.tab);
+    });
+    t.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        showTab(t.dataset.tab);
+      }
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const dir = e.key === 'ArrowRight' ? 1 : -1;
+        const idx = tabs.indexOf(t);
+        const next = tabs[(idx + dir + tabs.length) % tabs.length];
+        next.focus();
+      }
+    });
+  });
+
+  // On load: honor hash or default to "about"
+  const initial = (location.hash || '#about').replace('#', '');
+  showTab(initial, /*pushState*/ false);
+})();
 </script>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <small>© <span id="year"></span> NextWave Aquatic Training. All rights reserved.</small>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
-</html>
 
