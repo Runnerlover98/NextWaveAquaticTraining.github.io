@@ -108,7 +108,7 @@
     </div>
   </section>
   
-  <script>
+<script>
 (function () {
   const nav = document.querySelector('.nav[role="tablist"]');
   const panels = Array.from(document.querySelectorAll('.tab-panel'));
@@ -117,7 +117,7 @@
   if (!nav) {
     panels.forEach(p => p.style.display = 'none');
     const fallback = document.getElementById('about');
-    if (fallback) fallback.style.display = '';
+    if (fallback) fallback.style.display = 'block';
     return;
   }
 
@@ -133,9 +133,9 @@
       t.tabIndex = 0;
     });
 
-    // Show requested panel
+    // Show requested panel (the important line)
     const panel = document.getElementById(id);
-    if (panel) panel.style.display = '';
+    if (panel) panel.style.display = 'block';
 
     // Select matching tab
     const tab = tabs.find(t => t.dataset.tab === id);
